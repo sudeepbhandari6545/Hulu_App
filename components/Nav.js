@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import request from '../uthis/request'
+import request from '../uthis/requests'
 
 function Nav() {
   const router = useRouter()

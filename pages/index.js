@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
 import Result from '../components/Result'
-import request from '../uthis/request'
+import requests from '../uthis/requests'
 
-export default function Home() {
+export default function Home({ results }) {
   return (
     <div>
       <Head>
@@ -16,7 +16,7 @@ export default function Home() {
       {/* header */}
       <Header />
       <Nav />
-      <Result />
+      <Result result={results} />
     </div>
   )
 }
@@ -24,5 +24,15 @@ export default function Home() {
 export async function getServerSideProps(context) {
   const genre = context.query.genre
 
-  const request = await fetch(`https://api.themoviedb.org/3${request[genre]}`)
+  const request = await fetch(
+    `https://api.themoviedb.org/3${
+      requests[genre]?.url || requests.fetchTrending.url
+    }`,
+  ).then((res) => res.json())
+
+  return {
+    props: {
+      results: request.results,
+    },
+  }
 }
