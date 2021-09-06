@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
+import Result from '../components/Result'
+import request from '../uthis/request'
 
 export default function Home() {
   return (
@@ -14,6 +16,13 @@ export default function Home() {
       {/* header */}
       <Header />
       <Nav />
+      <Result />
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const genre = context.query.genre
+
+  const request = await fetch(`https://api.themoviedb.org/3${request[genre]}`)
 }
