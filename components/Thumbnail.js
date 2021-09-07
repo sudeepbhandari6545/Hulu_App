@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+//icons
 
 function Thumbnail({ result }) {
   const BASE_URL = 'https://image.tmdb.org/t/p/original/'
