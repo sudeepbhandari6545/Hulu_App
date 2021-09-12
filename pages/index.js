@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
-import Result from '../components/Result'
+import Results from '../components/Results'
 import requests from '../uthis/requests'
 
 export default function Home({ results }) {
@@ -16,7 +16,7 @@ export default function Home({ results }) {
       {/* header */}
       <Header />
       <Nav />
-      <Result result={result} />
+      <Results results={results} />
     </div>
   )
 }
